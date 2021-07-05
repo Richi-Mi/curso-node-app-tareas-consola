@@ -1,7 +1,37 @@
 [
     {
-        "id": "b8d4841a-ccce-4fce-9b42-785c106ab7bc",
-        "descripcion": "SIBRO",
+        "id": "c3026017-d6d8-46cb-93a9-e0ad9c843f3a",
+        "descripcion": "Recolectar las gemas del infinito",
+        "completadoEn": null
+    },
+    {
+        "id": "11bfad16-cd1d-41fc-9ccc-b41450542b47",
+        "descripcion": "Recolectar la gema del alma",
+        "completadoEn": null
+    },
+    {
+        "id": "98a9c019-62c3-42fd-92c6-3450153e64e5",
+        "descripcion": "Recolactar la del tiempo",
+        "completadoEn": null
+    },
+    {
+        "id": "04dc4266-ab92-4ae9-94f9-8a00c2a9b6d6",
+        "descripcion": "Recolectar la de la realidad",
+        "completadoEn": null
+    },
+    {
+        "id": "b2bf6733-328c-4d6d-a190-71908042fd79",
+        "descripcion": "Recolectar la del poder",
+        "completadoEn": null
+    },
+    {
+        "id": "57cd0cdf-5b18-4f55-9717-83ca3545ecd9",
+        "descripcion": "Crear un Servidor Web",
+        "completadoEn": null
+    },
+    {
+        "id": "8a64340e-2d86-468c-b395-6653d16b39dd",
+        "descripcion": "Crear una apliacion de Consola",
         "completadoEn": null
     }
 ]

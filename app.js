@@ -14,6 +14,7 @@ const main = async () => {
 
     if(tareasDB) {
         //Establecer Tareas
+        tareas.cargarTareasFromArray(tareasDB)
     }
     
     do {
@@ -24,17 +25,18 @@ const main = async () => {
         switch(answer) {
             case '1':
                 //Crear Opcion
-                const desc = await leerInput('Descripción: ')
+                const desc = await leerInput('Descripción:')
                 tareas.crearTarea(desc)
             break;
             case '2':
                 //Listar Tareas
-                console.log(tareas.Listado)
+                tareas.cargarTareasListado()
             break;
 
         }
 
-        // guardarDB(tareas.Listado)
+        guardarDB(tareas.Listado)
+        
         await pausaEnter()
 
     } while (answer !== '0');
