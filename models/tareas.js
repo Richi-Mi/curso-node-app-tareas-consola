@@ -9,6 +9,9 @@ class Tareas {
     constructor() {
         this._listado = {}
     }
+    cargarTareas(tareas) {
+        
+    }
     crearTarea(desc) {
         const tarea = new Tarea(desc)
         this._listado[tarea.id] = tarea
