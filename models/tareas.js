@@ -1,42 +1,45 @@
-/** _listado: 
- * { 'uuid-1234567-123456-2: { id: 12, desc: Tarea 1, completadoEn: fecha } }
- * 
- */
 require('colors')
 const Tarea = require("./tarea")
 
 class Tareas {
+
     constructor() {
         this._listado = {}
     }
+
     cargarTareasListado() {
-        //1: en verde
-        //Completada: Verde
-        //Pendiente: Rojo
-        //1. TareaDesc :: Completada || Pendiente
+        console.log('')
+
         this.Listado.forEach( (tarea, idx) => {
+
             let i = `${idx + 1}`.green
             const { descripcion, completadoEn} = tarea
             let estado 
+
             if(completadoEn === null) {
                 estado = 'Pendiente'.red
             } 
             else {
                 estado = 'Completada'.green
             }
+
             console.log(`${i} .- ${descripcion} :: ${estado}`)
+
         } )
         
     }
+
     cargarTareasFromArray (tareas) {
         tareas.forEach( (tarea) => {
             this._listado[tarea.id] = tarea
         })
     }
+
     crearTarea(desc) {
         const tarea = new Tarea(desc)
         this._listado[tarea.id] = tarea
     }
+
     get Listado() {
         const listado = []
         //Obtiene todos los valores del objeto(keys) y devuelve un arreglo
@@ -49,5 +52,33 @@ class Tareas {
 
         return listado
     }
+    listarPendientesCompletadas(completadas) {
+        console.log('')
+
+        this.Listado.forEach( ( tarea, idx ) => {
+            let i = `${idx + 1}`.green
+            let { completadoEn, descripcion } = tarea
+
+            let estado 
+            if(completadas) {
+                estado = '05/07/2021'.green
+                if(completadoEn !== null) {
+                    console.log(`${i} .- ${descripcion} :: ${estado}`)
+                } 
+            }
+            else {
+                estado = 'Pendiente'.red
+                if(completadoEn === null) {
+                    console.log(`${i} .- ${descripcion} :: ${estado}`)
+                }
+            }
+        } )
+    }
+    borrarTarea( id ) {
+        if(this._listado[id]) {
+            delete this._listado[id]
+        }
+    }
 }
+
 module.exports = Tareas

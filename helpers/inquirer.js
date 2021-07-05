@@ -81,9 +81,45 @@ const leerInput = async (message) => {
     const { desc } = await inquirer.prompt(question)
     return desc
 }
-
+const listadoTareasBorrar = async (tareas) => {
+    //map devuelve un arreglo con distintas keys pro misma informacion
+    const choices = tareas.map((tarea, i) => {
+        const idx = `${i + 1}`.green
+        return {
+            value: tarea.id,
+            name: `${idx}. ${tarea.descripcion}`
+        }
+    })
+    choices.unshift({
+        value: 0,
+        name: '0'.green + '. Cancelar'
+    })
+    const preguntas = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar',
+            choices
+        }
+    ]
+    const { id } = await inquirer.prompt(preguntas)
+    return id
+}
+const confirmar = async (message) => {
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ]
+    const { ok } = await inquirer.prompt(question)
+    return ok
+}
 module.exports = {
     inquireMenu,
     pausaEnter,
-    leerInput
+    leerInput,
+    listadoTareasBorrar,
+    confirmar
 }
