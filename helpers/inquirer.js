@@ -60,12 +60,30 @@ const opts = [
         choices: ['ENTER']
     }
 ]
-const pausa = async () => {
+const pausaEnter = async () => {
     console.log('\n')
     await inquirer.prompt(opts)
+}
+const leerInput = async (message) => {
+    const question = [
+        {
+            type: 'input',
+            name: 'desc',
+            message,
+            validate ( value ) {
+                if(value.length === 0) {
+                    return 'Por favor ingrese un valor'
+                }
+                return true
+            } 
+        }
+    ]
+    const { desc } = await inquirer.prompt(question)
+    return desc
 }
 
 module.exports = {
     inquireMenu,
-    pausa
+    pausaEnter,
+    leerInput
 }

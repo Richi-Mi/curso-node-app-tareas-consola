@@ -1,19 +1,35 @@
 // const { mostrarMenu, pausa } = require('./helpers/mensajes')
-
-const { inquireMenu, pausa } = require('./helpers/inquirer')
-
 require('colors')
-console.clear()
+
+const { inquireMenu, pausaEnter, leerInput } = require('./helpers/inquirer')
+const Tareas = require('./models/tareas')
 
 const main = async () => {
-    console.log('Main')
-    let answer = ''
-    do {
-        answer = await inquireMenu()
-        
-        console.log({ answer })
 
-        await pausa()
+    let answer = ''
+    const tareas = new Tareas()
+    
+    do {
+
+        //Imprimimimos el menu, y esperamos la respuesta de las opciones
+        answer = await inquireMenu()
+
+        switch(answer) {
+            case '1':
+                //Crear Opcion
+                const desc = await leerInput('Descripción: ')
+                tareas.crearTarea(desc)
+            break;
+            case '2':
+                //Listar Tareas
+                console.log(tareas.Listado)
+            break;
+
+        }
+
+        await pausaEnter()
+        console.log(answer)
+
     } while (answer !== '0');
 
     // pausa()
